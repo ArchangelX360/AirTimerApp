@@ -11,7 +11,7 @@ import SwiftUI
 struct AirTimerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TimerView()
         }
     }
 }
