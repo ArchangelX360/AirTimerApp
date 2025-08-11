@@ -22,6 +22,7 @@
 		192944692E48BA2F00664DC0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		192944712E4943D300664DC0 /* AirTimer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AirTimer-Bridging-Header.h"; sourceTree = "<group>"; };
 		1929447F2E4A9F4100664DC0 /* TimerDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDuration.swift; sourceTree = "<group>"; };
+		192944812E4AA0F000664DC0 /* AirTimer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AirTimer-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +39,7 @@
 		1913C6642E4750C100EC799D = {
 			isa = PBXGroup;
 			children = (
+				192944812E4AA0F000664DC0 /* AirTimer-Info.plist */,
 				1929447F2E4A9F4100664DC0 /* TimerDuration.swift */,
 				192944712E4943D300664DC0 /* AirTimer-Bridging-Header.h */,
 				192944662E48BA2F00664DC0 /* AirTimerApp.swift */,
@@ -272,6 +274,7 @@
 				DEVELOPMENT_TEAM = 59Z7WA35W7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AirTimer-Info.plist";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Reads the currently playing media to pause it when the timer expires.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -302,6 +305,7 @@
 				DEVELOPMENT_TEAM = 59Z7WA35W7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AirTimer-Info.plist";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Reads the currently playing media to pause it when the timer expires.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
