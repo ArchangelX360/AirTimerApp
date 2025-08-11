@@ -2,16 +2,20 @@ import SwiftUI
 
 struct TimerView: View {
     private var audioManager = AudioManager()
-    @State private var selectedDuration: TimerDuration = .fiveMinutes
     @State private var showingDurationPicker = false
-    
+    private var selectedDurationBinding: Binding<TimerDuration> {
+        Binding(
+            get: { audioManager.selectedDuration },
+            set: { audioManager.selectedDuration = $0 }
+        )
+    }
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 Spacer()
                 
                 Button(action: {
-                    audioManager.isSleepTimerActive ? audioManager.stopSleepTimer() : audioManager.startSleepTimer(by: selectedDuration)
+                    audioManager.isSleepTimerActive ? audioManager.stopSleepTimer() : audioManager.startSleepTimer(by: audioManager.selectedDuration)
                 }) {
                     ZStack {
                         Circle()
@@ -40,21 +44,33 @@ struct TimerView: View {
                 
                 VStack(spacing: 20) {
                     HStack(spacing: geometry.size.width * 0.4 / 3) {
-                        Button(action: { audioManager.backtrack(by: selectedDuration) }) {
+                        
+                        Button(action: { audioManager.toggleRestartTimerOnPlay() }) {
                             VStack(spacing: 4) {
-                                Image(systemName: "gobackward")
+                                Image(systemName: "point.forward.to.point.capsulepath")
                                     .font(.title3)
-                                Text(selectedDuration.backtrackLabel)
+                                Text("Auto")
                                     .font(.caption)
                             }
-                            .foregroundColor(.primary)
+                            .foregroundColor(audioManager.restartTimerOnPlay ? .accentColor : .primary)
                         }
+                        
+                        // Button(action: { audioManager.backtrack(by: audioManager.selectedDuration) }) {
+                        //     VStack(spacing: 4) {
+                        //         Image(systemName: "gobackward")
+                        //             .font(.title3)
+                        //         Text(audioManager.selectedDuration.backtrackLabel)
+                        //             .font(.caption)
+                        //     }
+                        //     .foregroundColor(.secondary)
+                        // }
+                        // .disabled(true)
                         
                         Button(action: { showingDurationPicker = true }) {
                             VStack(spacing: 4) {
                                 Image(systemName: "timer")
                                     .font(.title3)
-                                Text(selectedDuration.shortLabel)
+                                Text(audioManager.selectedDuration.shortLabel)
                                     .font(.caption)
                             }
                             .foregroundColor(.primary)
@@ -77,7 +93,7 @@ struct TimerView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .sheet(isPresented: $showingDurationPicker) { // TODO: should be nice not to be a sheet, but a pop-up like Apple Books
-            DurationPickerView(selectedDuration: $selectedDuration)
+            DurationPickerView(selectedDuration: selectedDurationBinding)
         }
     }
     
@@ -97,20 +113,21 @@ struct DurationPickerView: View {
     var body: some View {
         NavigationView {
             List(TimerDuration.allCases) { duration in
+                let disabled = duration == TimerDuration.endOfChapter // FIXME: remove when supported
                 Button(action: {
                     selectedDuration = duration
                     dismiss()
                 }) {
                     HStack {
                         Text(duration.label)
-                            .foregroundColor(.primary)
+                            .foregroundColor(disabled ? .secondary : .primary)
                         Spacer()
                         if selectedDuration == duration {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.accentColor)
                         }
                     }
-                }
+                }.disabled(disabled)
             }
             .navigationTitle("Timer Duration")
             .navigationBarTitleDisplayMode(.inline)

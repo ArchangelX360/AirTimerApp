@@ -6,17 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1929446A2E48BA2F00664DC0 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192944682E48BA2F00664DC0 /* AudioManager.swift */; };
+		1929446B2E48BA2F00664DC0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192944692E48BA2F00664DC0 /* TimerView.swift */; };
+		1929446C2E48BA2F00664DC0 /* AirTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192944662E48BA2F00664DC0 /* AirTimerApp.swift */; };
+		1929446D2E48BA2F00664DC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 192944672E48BA2F00664DC0 /* Assets.xcassets */; };
+		192944802E4A9F4200664DC0 /* TimerDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1929447F2E4A9F4100664DC0 /* TimerDuration.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1913C66D2E4750C100EC799D /* AirTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		192944662E48BA2F00664DC0 /* AirTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTimerApp.swift; sourceTree = "<group>"; };
+		192944672E48BA2F00664DC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		192944682E48BA2F00664DC0 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		192944692E48BA2F00664DC0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		192944712E4943D300664DC0 /* AirTimer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AirTimer-Bridging-Header.h"; sourceTree = "<group>"; };
+		1929447F2E4A9F4100664DC0 /* TimerDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		1913C66F2E4750C100EC799D /* AirTimer */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AirTimer;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1913C66A2E4750C100EC799D /* Frameworks */ = {
@@ -32,7 +38,12 @@
 		1913C6642E4750C100EC799D = {
 			isa = PBXGroup;
 			children = (
-				1913C66F2E4750C100EC799D /* AirTimer */,
+				1929447F2E4A9F4100664DC0 /* TimerDuration.swift */,
+				192944712E4943D300664DC0 /* AirTimer-Bridging-Header.h */,
+				192944662E48BA2F00664DC0 /* AirTimerApp.swift */,
+				192944672E48BA2F00664DC0 /* Assets.xcassets */,
+				192944682E48BA2F00664DC0 /* AudioManager.swift */,
+				192944692E48BA2F00664DC0 /* TimerView.swift */,
 				1913C66E2E4750C100EC799D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +70,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				1913C66F2E4750C100EC799D /* AirTimer */,
 			);
 			name = AirTimer;
 			packageProductDependencies = (
@@ -109,6 +117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1929446D2E48BA2F00664DC0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +128,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1929446A2E48BA2F00664DC0 /* AudioManager.swift in Sources */,
+				192944802E4A9F4200664DC0 /* TimerDuration.swift in Sources */,
+				1929446B2E48BA2F00664DC0 /* TimerView.swift in Sources */,
+				1929446C2E48BA2F00664DC0 /* AirTimerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +171,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = AirTimer.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 59Z7WA35W7;
@@ -222,6 +236,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = AirTimer.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 59Z7WA35W7;
@@ -251,6 +266,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59Z7WA35W7;
@@ -269,6 +285,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.dorne.AirTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AirTimer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -279,6 +296,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59Z7WA35W7;
@@ -297,6 +315,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.dorne.AirTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AirTimer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
