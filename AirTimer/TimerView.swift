@@ -94,6 +94,10 @@ struct TimerView: View {
         }
         .sheet(isPresented: $showingDurationPicker) { // TODO: should be nice not to be a sheet, but a pop-up like Apple Books
             DurationPickerView(selectedDuration: selectedDurationBinding)
+        }.onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true  // ensures screen stays on
+        }.onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = false // restore default
         }
     }
     
