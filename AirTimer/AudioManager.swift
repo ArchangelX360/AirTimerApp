@@ -17,8 +17,8 @@ class AudioManager {
     private(set) var timeLeft: TimeInterval? = nil
     private(set) var sleepTimer: Timer? = nil
     
-    private(set) var restartTimerOnPlay: Bool = false
-    
+    private(set) var restartTimerOnPlay: Bool = true
+
     init() {
         startAudioResumeObserver()
         // startPlaybackUpdater()
@@ -69,19 +69,29 @@ class AudioManager {
         // hack start an audio session just to be able to receive events
         let session = AVAudioSession.sharedInstance()
         try? session.setCategory(.ambient, options: [.mixWithOthers])
+
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: .main
+        ) { _ in
+            try? session.setActive(true) // ensure active across locks, app-switch, etc.
+        }
         try? session.setActive(true)
-        
+
         NotificationCenter.default.addObserver(
             forName: AVAudioSession.silenceSecondaryAudioHintNotification,
             object: session,
             queue: .main
         ) { note in
+            print("received notification \(note)")
             guard
                 let raw = note.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey] as? UInt,
                 let type = AVAudioSession.SilenceSecondaryAudioHintType(rawValue: raw)
             else { return }
             
             let otherAppResumedAudio = (type == .begin)
+            print("otherAppResumedAudio: \(otherAppResumedAudio)")
             Task { @MainActor in
                 self.isPlaying = otherAppResumedAudio
                 if otherAppResumedAudio && self.restartTimerOnPlay { // when AirPod play button is pressed for example
